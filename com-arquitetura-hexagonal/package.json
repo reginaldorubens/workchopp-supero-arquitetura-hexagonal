@@ -1,0 +1,31 @@
+{
+  "name": "workchopp_arquitetura_hexagonal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "serverExpress.js",
+  "scripts": {
+    "start-express": "nodemon ./src/serverExpress.ts",
+    "start-hapi": "nodemon ./src/serverHapi.ts",
+    "test": "jest --runInBand"
+  },
+  "author": "Reginaldo Rubens da Silva",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "pg-promise": "^10.11.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/hapi": "^18.0.7",
+    "@types/jest": "^28.1.1",
+    "@types/pg-promise": "^5.4.3",
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.13",
+    "ts-jest": "^28.0.4",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  }
+}
