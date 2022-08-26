@@ -1,5 +1,6 @@
 import Http from "./Http";
 import Hapi from "@hapi/hapi";
+import HttpResponse from "./HttpResponse";
 
 export default class HapiHttp implements Http {
     server: Hapi.Server;
@@ -34,8 +35,8 @@ export default class HapiHttp implements Http {
             path: this.convertUrl(url),
             handler: async function (request: any, h: any) {
                 try {
-                    const data = await fn(request.params, request.payload);
-                    return data;
+                    const response: HttpResponse = await fn(request.params, request.payload);
+                    return h.response(response.body).code(response.statusCode);
                 }
                 catch( e: any) {
                     return h.response({error: e.message}).code(400);

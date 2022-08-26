@@ -1,6 +1,7 @@
 import Http from "./Http";
 import express from "express";
 import cors from "cors";
+import HttpResponse from "./HttpResponse";
 
 export default class ExpressHttp implements Http {
 	app: any;
@@ -28,8 +29,8 @@ export default class ExpressHttp implements Http {
 	addRoute(method: string, url: string, callback: Function): void {
 		this.app[method](url, async (req: any, res: any) => {
 			try {
-				const output = await callback(req.params, req.body);
-				res.json(output);
+				const response: HttpResponse = await callback(req.params, req.body);
+				res.status(response.statusCode).json(response.body);
 			} catch (e: any) {
 				res.status(400).json({ error: e.message });
 			}
