@@ -17,7 +17,7 @@ export default class TransferBetweenAccountsController {
     this.http.addRoute('post', ROUTES_PREFIX + '/', async (params: any, body: any) => {
       await this.transferService.executeTransfer(body.accountFromId, body.accountToId, body.amount);
 
-      return null;
+      return '';
     });
   }
 }

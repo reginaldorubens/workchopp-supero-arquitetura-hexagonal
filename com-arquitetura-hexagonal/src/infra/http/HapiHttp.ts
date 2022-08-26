@@ -8,8 +8,20 @@ export default class HapiHttp implements Http {
         this.server = Hapi.server({});
     }
 
-    convertUrl (url: string) {
-        return url.replace(/\$/g, "");
+    convertUrl (url: string) {        
+        const urlWithConvertedParameters = this.convertUrlParameters(url);
+        return urlWithConvertedParameters.replace(/\$/g, "");
+    }
+
+    convertUrlParameters(url: string) {
+        let urlParts = url.split('/');
+        for (let p = 0; p < urlParts.length; p++) {
+            if (urlParts[p].indexOf(':') >= 0) {
+                urlParts[p] = '{' + urlParts[p].replace(':', '') + '}';
+            }
+        }
+
+        return urlParts.join('/');
     }
 
 	setMiddleware(fn: any): void {
@@ -21,8 +33,13 @@ export default class HapiHttp implements Http {
             method,
             path: this.convertUrl(url),
             handler: async function (request: any, h: any) {
-                const data = await fn(request.params, request.payload);
-                return data;
+                try {
+                    const data = await fn(request.params, request.payload);
+                    return data;
+                }
+                catch( e: any) {
+                    return h.response({error: e.message}).code(400);
+                }
             }
         });
     }

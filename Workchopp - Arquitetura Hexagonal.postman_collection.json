@@ -21,7 +21,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/v1/accounts",
+					"raw": "localhost:3000/api/v1/accounts/",
 					"host": [
 						"localhost"
 					],
@@ -29,7 +29,8 @@
 					"path": [
 						"api",
 						"v1",
-						"accounts"
+						"accounts",
+						""
 					]
 				}
 			},
@@ -72,7 +73,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/v1/accounts",
+					"raw": "localhost:3000/api/v1/accounts/",
 					"host": [
 						"localhost"
 					],
@@ -80,7 +81,8 @@
 					"path": [
 						"api",
 						"v1",
-						"accounts"
+						"accounts",
+						""
 					]
 				}
 			},
@@ -123,7 +125,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/v1/accounts",
+					"raw": "localhost:3000/api/v1/accounts/",
 					"host": [
 						"localhost"
 					],
@@ -131,7 +133,8 @@
 					"path": [
 						"api",
 						"v1",
-						"accounts"
+						"accounts",
+						""
 					]
 				}
 			},
@@ -242,7 +245,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/v1/transferBetweenAccounts",
+					"raw": "localhost:3000/api/v1/transferBetweenAccounts/",
 					"host": [
 						"localhost"
 					],
@@ -250,7 +253,8 @@
 					"path": [
 						"api",
 						"v1",
-						"transferBetweenAccounts"
+						"transferBetweenAccounts",
+						""
 					]
 				}
 			},

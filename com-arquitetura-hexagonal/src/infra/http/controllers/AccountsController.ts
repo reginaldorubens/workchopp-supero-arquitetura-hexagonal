@@ -12,19 +12,21 @@ export default class AccountsController {
   }
 
   init () {
-    this.http.addRoute('post', ROUTES_PREFIX + '/deposit', async (params: any, body: any) => {
+    this.http.addRoute('POST', ROUTES_PREFIX + '/deposit', async (params: any, body: any) => {
         await this.accountService.depositIntoAccount(body.accountId, body.amount);
+        return '';
     });
     
-    this.http.addRoute('post', ROUTES_PREFIX + '/withdrawal', async (params: any, body: any) => {
+    this.http.addRoute('POST', ROUTES_PREFIX + '/withdrawal', async (params: any, body: any) => {
       await this.accountService.withdrawAccount(body.accountId, body.amount);
+      return '';
     });
     
-    this.http.addRoute('post', ROUTES_PREFIX + '/', async (params: any, body: any) => {
+    this.http.addRoute('POST', ROUTES_PREFIX + '/', async (params: any, body: any) => {
       return this.accountService.createAccount(body.id, body.initialBalance);
     });
     
-    this.http.addRoute('get', ROUTES_PREFIX + '/getCurrentBalance/:id', async (params: any, body: any) => { 
+    this.http.addRoute('GET', ROUTES_PREFIX + '/getCurrentBalance/:id', async (params: any, body: any) => { 
       return this.accountService.getCurrentBalance(params.id);
     });
   }
