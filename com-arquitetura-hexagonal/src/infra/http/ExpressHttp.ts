@@ -27,7 +27,7 @@ export default class ExpressHttp implements Http {
 	}
 
 	addRoute(method: string, url: string, callback: Function): void {
-		this.app[method](url, async (req: any, res: any) => {
+		this.app[method.toLowerCase()](url, async (req: any, res: any) => {
 			try {
 				const response: HttpResponse = await callback(req.params, req.body);
 				res.status(response.statusCode).json(response.body);
