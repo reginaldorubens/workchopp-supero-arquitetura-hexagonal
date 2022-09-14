@@ -24,11 +24,11 @@ export default class AccountsController {
     });
     
     this.http.addRoute('POST', ROUTES_PREFIX + '/', async (params: any, body: any) => {
-      return new HttpResponse(this.accountService.createAccount(body.id, body.initialBalance), 201);
+      return new HttpResponse(await this.accountService.createAccount(body.id, body.initialBalance), 201);
     });
     
     this.http.addRoute('GET', ROUTES_PREFIX + '/getCurrentBalance/:id', async (params: any, body: any) => { 
-      return new HttpResponse(this.accountService.getCurrentBalance(params.id), 200);
+      return new HttpResponse({currentBalance: await this.accountService.getCurrentBalance(params.id)}, 200);
     });
   }
 }
